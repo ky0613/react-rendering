@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./styles.css";
 
 export default function App() {
+  console.log("App");
+
   const [count, setCount] = useState(0);
   const onClickAdd = () => {
     setCount(count + 1);
