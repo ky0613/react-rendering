@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { ChildArea } from "./ChildArea";
 import "./styles.css";
 
@@ -17,6 +17,11 @@ export default function App() {
   // アロー関数で書いたときはコンポーネントをmemo化しても新しい別の関数と認識されるので
   // propsの変更を感知して再レンダリングが起きる
   const onClickClose = useCallback(() => setOpen(false), []);
+
+  // useMemoを使うことで処理の重い変数をmemo化して再計算せずに使いまわせるようになる
+  const temp = useMemo(() => 1 + 3, []);
+  console.log(temp);
+
   return (
     <div className="App">
       <input type="text" onChange={onChengeText} value={text} />
